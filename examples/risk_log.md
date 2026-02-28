@@ -43,4 +43,6 @@ fmd: 0.1
 ## Comments
 
 - **Supplier failure / Frequency (per year)** *(Alice)*: Frequency updated from 0.3 based on Q4 incident report.
+  - *(Bob)*: Confirmed — updated after the Q4 review meeting.
 - **Key person leaves / Impact (1–10)** *(Bob)*: Succession plan in progress — reassess next quarter.
+  - *(Alice)*: Plan drafted, pending HR approval.
