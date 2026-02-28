@@ -45,7 +45,7 @@ See [`SPEC.md`](SPEC.md) for the full specification and [`examples/`](examples/)
 | Tool | Description |
 |------|-------------|
 | [`tools/excel_to_fmd.py`](tools/excel_to_fmd.py) | Convert an Excel workbook to FMD (one `.md` file per sheet) |
-| MCP server | *(planned)* Expose FMD evaluation as a Model Context Protocol tool |
+| MCP server | *(planned)* Expose excel_to_fmd as a Model Context Protocol tool |
 
 ### Excel → FMD
 
@@ -79,7 +79,6 @@ FMD is in early design. The format spec and example are stable. Tools are in act
 - [x] Format specification
 - [x] Annotated example
 - [x] Excel → FMD converter
-- [ ] FMD evaluator (reference implementation)
 - [ ] MCP server
 
 ---
