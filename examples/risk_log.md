@@ -42,5 +42,5 @@ fmd: 0.1
 
 ## Comments
 
-- **C3** *(Alice)*: Frequency updated from 0.3 based on Q4 incident report.
-- **B4** *(Bob)*: Succession plan in progress — reassess next quarter.
+- **Supplier failure / Frequency (per year)** *(Alice)*: Frequency updated from 0.3 based on Q4 incident report.
+- **Key person leaves / Impact (1–10)** *(Bob)*: Succession plan in progress — reassess next quarter.

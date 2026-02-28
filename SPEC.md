@@ -133,6 +133,20 @@ When an FMD document is produced from another source (e.g. converted from Excel)
 
 ---
 
+## Comments
+
+A `## Comments` section may appear anywhere in the file, typically at the end. Each comment identifies the cell it refers to using the **row name** (value of the first column in that row) and the **column name** (column header), separated by ` / `:
+
+```markdown
+## Comments
+
+- **{Row Name} / {Column Name}** *(Author)*: Comment text.
+```
+
+This format stays readable in plain Markdown and uses names that are meaningful within the FMD document, rather than spreadsheet coordinates (e.g. `B4`) that have no referent in Markdown.
+
+---
+
 ## File conventions
 
 - FMD files use the `.md` extension. No special extension is required.

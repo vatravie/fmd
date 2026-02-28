@@ -35,7 +35,7 @@ workbook_name/
 | `=SUM(B2:B10)` (single column) | `` `=SUM(Column B)` `` |
 | Cross-row, cross-sheet, or unsupported | Replaced with last computed value |
 
-Cell comments are collected at the bottom of each file under a `## Comments` section.
+Cell comments are collected at the bottom of each file under a `## Comments` section. Each comment is identified by the row name (first-column value) and the column header, e.g. `**Supplier failure / Frequency (per year)** *(Alice)*: …`.
 
 ---
 
