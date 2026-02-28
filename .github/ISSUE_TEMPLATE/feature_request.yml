@@ -1,0 +1,32 @@
+name: Spec proposal / Feature request
+description: Suggest a change or addition to the FMD format or tools
+labels: [proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before proposing a new feature, please check existing issues and read the
+        "Out of scope" section of CONTRIBUTING.md.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the real-world scenario that motivated this proposal.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed syntax or behaviour
+      description: Show a concrete FMD example if relevant.
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you consider, and why did you prefer this one?
