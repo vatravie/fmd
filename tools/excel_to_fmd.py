@@ -140,7 +140,7 @@ def sheet_to_fmd(ws, value_ws) -> str:
     value_ws — same sheet loaded with data_only=True  (contains computed values)
     """
     sections = []
-    comments = []  # (cell_ref, author, text)
+    comments = []  # (row_name, col_name, author, text)
 
     max_row = ws.max_row or 0
     max_col = ws.max_column or 0
@@ -148,20 +148,22 @@ def sheet_to_fmd(ws, value_ws) -> str:
     if max_row == 0 or max_col == 0:
         return "_Empty sheet._\n"
 
-    # Harvest comments (only available on formula workbook)
-    for row in ws.iter_rows(min_row=1, max_row=max_row, max_col=max_col):
-        for cell in row:
-            if cell.comment:
-                ref = f"{get_column_letter(cell.column)}{cell.row}"
-                author = cell.comment.author or "Unknown"
-                text = cell.comment.text.strip() if cell.comment.text else ""
-                comments.append((ref, author, text))
-
     # Load both formula rows and value rows together
     formula_rows = list(ws.iter_rows(min_row=1, max_row=max_row, max_col=max_col))
     value_rows   = list(value_ws.iter_rows(min_row=1, max_row=max_row, max_col=max_col))
 
     headers = [cell_value_to_str(c) for c in formula_rows[0]]
+
+    # Harvest comments using row name (first-column value) and column header
+    for row in formula_rows[1:]:
+        row_name = cell_value_to_str(row[0]) if row else ""
+        for cell in row:
+            if cell.comment:
+                col_idx = cell.column - 1  # 0-based
+                col_name = headers[col_idx] if col_idx < len(headers) else get_column_letter(cell.column)
+                author = cell.comment.author or "Unknown"
+                text = cell.comment.text.strip() if cell.comment.text else ""
+                comments.append((row_name, col_name, author, text))
 
     is_vars_block = (
         max_col == 2
@@ -203,8 +205,8 @@ def sheet_to_fmd(ws, value_ws) -> str:
     # --- Comments section ---
     if comments:
         sections.append("\n## Comments\n")
-        for ref, author, text in comments:
-            sections.append(f"**{ref}** _(by {author})_: {text}\n")
+        for row_name, col_name, author, text in comments:
+            sections.append(f"**{row_name} / {col_name}** *({author})*: {text}\n")
 
     return "\n\n".join(sections) + "\n"
 
